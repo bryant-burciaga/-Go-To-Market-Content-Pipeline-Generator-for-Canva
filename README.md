@@ -22,6 +22,12 @@ The production version was built on an internal library of 1,400+ ideas and desi
 
 **Flow:** Google Sheets -> Apps Script -> Gemini -> Structured output sheet -> Canva Bulk Create -> Scheduled Content Posts
 
+[Google Sheet DB] ──(clasp/Apps Script)──> [Dynamic Prompts]
+                                                 │
+ [Canva Layouts] <──(JSON Array Parser)── [Gemini 2.5 Flash]
+        │
+        └──> [Rolling History_Log] ──> [Canva Bulk Create Pipeline]
+
 ## Example outputs
 
 The pipeline is designed to generate structured fields that support multiple content formats, such as:
@@ -74,6 +80,20 @@ Then push local changes with:
 ```bash
 clasp push
 ```
+
+## Local Testing Infrastructure
+
+Because Google Apps Script constraints isolate execution to Google's Cloud sandbox (leaving native APIs like `SpreadsheetApp`, `UrlFetchApp`, and `PropertiesService` unavailable globally in standard Node.js), a local mocking engine was engineered to support headless unit testing.
+
+The project uses **Jest** alongside an explicit global interceptor (`mocks.js`) to decouple business algorithms from live workspace integrations. This enables immediate testing of configuration validation, dynamic layout generation, and deep matching logic on an absolute local scope.
+
+### Running Unit Tests Locally
+
+Ensure development dependencies are initialized:
+```bash
+npm install
+
+npm test
 
 ## Canva integration
 

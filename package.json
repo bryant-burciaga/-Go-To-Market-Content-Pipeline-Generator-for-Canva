@@ -1,0 +1,19 @@
+{
+  "name": "side-hustle-content-pipeline",
+  "version": "1.0.0",
+  "description": "A Google Apps Script-based content automation pipeline that transforms structured startup content ideas into reusable social media content variants for Canva Bulk Create workflows.",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "jest": "^30.4.2"
+  }
+}
